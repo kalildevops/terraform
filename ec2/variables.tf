@@ -13,7 +13,7 @@ variable aws_profile {
 variable ec2_key {
   type        = string
   default     = "ec2"
-  description = "EC2 keypair name for SSH"
+  description = "EC2 keypair name  for SSH"
 }
 
 variable tfstate_bucket {
@@ -49,7 +49,7 @@ variable ami_owner {
 variable default_ingress {
   type = map(object({description = string, cidr_blocks = list(string)}))
   default = {
-    22 = { description = "Inbound para SSH", cidr_blocks = [ "191.183.197.43/32" ] }
+    22 = { description = "Inbound para SSH", cidr_blocksx }
   }
 }
 
