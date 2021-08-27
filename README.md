@@ -1,11 +1,11 @@
 # Description
-This automation creates a EC2 instance and SG with your IP/32 in ingress rule. The tfstate file is stored on S3
+This automation create AWS resources. The tfstate file is stored on S3
 
-## Create EC2 and SG with your IP
+## Create resources
 
-./terraform_apply.sh
+./terraform_SERVICE_apply.sh
 
-## Destroy EC2 and SG with your IP
+## Destroy resources
 
-./terraform_destroy.sh
+./terraform_SERVICE_destroy.sh
 
