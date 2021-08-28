@@ -5,6 +5,8 @@
 *.tfstate
 *.tfstate.*
 
+# test files
+*.kalil
 # Crash log files
 crash.log
 

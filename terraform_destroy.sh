@@ -1,6 +1,7 @@
-# Destroy EC2 and SG
-cd ec2 && terraform init && terraform destroy
+# Destroy resources
+cd $1 && terraform init && terraform destroy
 
+# Clear
 cd ../
 find . -name terraform.tfstate -exec rm -rf {} \;
 find . -name .terraform* -exec rm -rf {} \;
