@@ -1,5 +1,5 @@
 # Create and init backend (tfstate)
-cd tfstate && terraform init && terraform apply
+cd tfstate && terraform init && terraform apply -auto-approve
 
 # Verify if service is EC2 for customize SG ingress
 if [ $1 = "ec2" ]; then

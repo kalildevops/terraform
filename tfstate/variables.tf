@@ -19,7 +19,6 @@ variable tfstate_bucket {
 variable tags {
   type = map
   default = {
-    OS = "Ubuntu20"
     Creation = "Terraform"
   }
 }
