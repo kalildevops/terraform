@@ -12,19 +12,7 @@ resource "aws_security_group" "ec2-sg" {
       protocol    = "tcp"
       cidr_blocks = ingress.value["cidr_blocks"]
     }
-
-    
   }
-
-  # egress = [
-  #   {
-  #     from_port        = 0
-  #     to_port          = 0
-  #     protocol         = -1
-  #     cidr_blocks      = ["0.0.0.0/0"]
-  #     ipv6_cidr_blocks = ["::/0"]
-  #   }
-  # ]
 
   tags = merge({ Name = "${var.ec2_key}-sg" }, var.tags)
 }
