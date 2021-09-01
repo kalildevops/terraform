@@ -7,6 +7,13 @@
 
 # test files
 *.kalil
+
+# bkp files
+*.bkp
+
+# drawio files
+*.drawio
+
 # Crash log files
 crash.log
 

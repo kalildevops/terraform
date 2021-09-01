@@ -22,17 +22,17 @@ variable tfstate_key {
 # Network
 variable vpc_cidr_block {
   type        = string
-  default     = "10.0.0.0/28"
+  default     = "10.0.0.0/20"
 }
 
 variable priv_cidr_block {
   type        = string
-  default     = "10.0.0.0/29"
+  default     = "10.0.1.0/25"
 }
 
 variable pub_cidr_block {
   type        = string
-  default     = "10.0.0.8/29"
+  default     = "10.0.2.0/25"
 }
 
 # EC2
