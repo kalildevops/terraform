@@ -7,7 +7,9 @@ This automation create AWS resources. The tfstate file is stored on S3
 
 Ex:
 
-``` ./terraform_apply.sh ec2 ```
+``` ./terraform_apply.sh ec2_only ```
+
+If you choose ec2_complete, you must entry your .pem file path to Ansible can connect in your EC2
 
 ## Destroy resources
 
@@ -15,5 +17,5 @@ Ex:
 
 Ex:
 
-``` ./terraform_destroy.sh ec2 ```
+``` ./terraform_destroy.sh ec2_only ```
 
