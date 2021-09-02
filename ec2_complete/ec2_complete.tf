@@ -21,5 +21,5 @@ resource "aws_instance" "this" {
   subnet_id = aws_subnet.subnet_pub.id
   key_name = var.ec2_key
 
-  tags = merge({ Name = var.ec2_key }, var.tags)
+  tags = merge({ Name = "${var.ec2_key}-complete" }, var.tags)
 }

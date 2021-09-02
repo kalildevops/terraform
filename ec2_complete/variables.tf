@@ -16,7 +16,7 @@ variable tfstate_bucket {
 
 variable tfstate_key {
   type = string
-  default = "ec2/terraform.state"
+  default = "ec2_complete/terraform.state"
 }
 
 # Network

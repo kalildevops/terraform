@@ -1,12 +1,17 @@
 # Create and init backend (tfstate)
 cd tfstate && terraform init && terraform apply -auto-approve
 
-# Verify if service is EC2 for customize SG ingress
-if [ $1 = "ec2" ]; then
-    cd ../ec2
+update_sg() {
     myip=$(curl -s ifconfig.me |sed "s/%//g")
     gsed -i "s|cidr_blocksx|cidr_blocks = [ \"$myip/32\" ]|g" variables.tf
-    
+}
+
+# Verify if service is EC2 for customize SG ingress
+if [ $1 = "ec2_complete" ]; then
+    cd ../$1
+
+    update_sg
+
     # Create infra with Terraform
     terraform init && terraform apply
     
@@ -25,9 +30,16 @@ if [ $1 = "ec2" ]; then
     # Configure instance with Ansible
     ansible-playbook playbook.yml -i inventory.yml
     
-    
     cp inventory.yml.bkp inventory.yml
     cp variables.tf.bkp variables.tf
+
+elif [ $1 = "ec2_only" ] ; then
+    cd ../$1
+
+    update_sg
+
+    # Create infra with Terraform
+    terraform init && terraform apply
 
 else
     cd ../$1

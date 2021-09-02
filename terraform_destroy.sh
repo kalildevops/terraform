@@ -1,7 +1,11 @@
+cd $1
+
+# Change SG
+myip=$(curl -s ifconfig.me |sed "s/%//g")
+gsed -i "s|cidr_blocksx|cidr_blocks = [ \"$myip/32\" ]|g" variables.tf
+
 # Destroy resources
-cd $1 && terraform init && terraform destroy
+terraform init && terraform destroy
 
 # Clear
-cd ../
-find . -name terraform.tfstate -exec rm -rf {} \;
-find . -name .terraform* -exec rm -rf {} \;
+cp variables.tf.bkp variables.tf
