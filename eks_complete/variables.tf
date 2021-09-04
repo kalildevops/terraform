@@ -45,22 +45,27 @@ variable pub2_cidr_block {
   default = "10.0.0.192/26"
 }
 
+# Network name
+variable network_name {
+  type        = string
+  default     = "vpc-eks-complete"
+}
+
 # EKS
 variable eks_cluster_name {
   type = string
-  default = "eks-cluster-github"
+  default = "eks-cluster-github-complete"
 }
 
 variable tfstate_key {
   type = string
-  default = "eks/terraform.state"
+  default = "eks_complete/terraform.state"
 }
 
 # Tags
 variable tags {
   type = map
   default = {
-    Project = "POC-EKS"
     Creation = "Terraform"
   }
 }

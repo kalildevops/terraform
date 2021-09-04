@@ -4,10 +4,10 @@ resource "aws_eks_cluster" "this" {
 
   vpc_config {
     subnet_ids = [
-        aws_subnet.subnet_priv1.id,
-        aws_subnet.subnet_priv2.id,
-        aws_subnet.subnet_pub1.id,
-        aws_subnet.subnet_pub2.id
+        module.network_eks.subnet_priv1_id,
+        module.network_eks.subnet_priv2_id,
+        module.network_eks.subnet_pub1_id,
+        module.network_eks.subnet_pub2_id
     ]
   }
 
