@@ -1,7 +1,7 @@
 resource "aws_security_group" "ec2-sg" {
   name        = "ec2-sg"
   description = "SG for EC2 instance"
-  vpc_id      = aws_vpc.this.id
+  vpc_id      = module.network_ec2.vpc_id
 
   dynamic "ingress" {
     for_each = var.default_ingress

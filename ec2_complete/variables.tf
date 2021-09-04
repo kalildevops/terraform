@@ -35,6 +35,11 @@ variable pub_cidr_block {
   default     = "10.0.2.0/25"
 }
 
+variable network_name {
+  type        = string
+  default     = "vpc-ec2-complete"
+}
+
 # EC2
 variable ec2_key {
   type        = string
