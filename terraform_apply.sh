@@ -41,6 +41,8 @@ elif [ $1 = "ec2_only" ] ; then
     # Create infra with Terraform
     terraform init && terraform apply
 
+    cp variables.tf.bkp variables.tf
+
 else
     cd ../$1
     # Create infra with Terraform

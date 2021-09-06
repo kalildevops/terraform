@@ -19,22 +19,6 @@ variable tfstate_key {
   default = "ec2_only/terraform.state"
 }
 
-# Network
-variable vpc_cidr_block {
-  type        = string
-  default     = "10.0.0.0/20"
-}
-
-variable priv_cidr_block {
-  type        = string
-  default     = "10.0.1.0/25"
-}
-
-variable pub_cidr_block {
-  type        = string
-  default     = "10.0.2.0/25"
-}
-
 # EC2
 variable ec2_key {
   type        = string

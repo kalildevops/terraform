@@ -17,7 +17,7 @@ data "aws_ami" "this" {
 data "aws_subnet" "subnet_pub" {
   filter {
     name   = "tag:Name"
-    values = ["vpc-github-subnet-pub"]
+    values = ["vpc-github-ec2-only-subnet-pub"]
   }
 }
 

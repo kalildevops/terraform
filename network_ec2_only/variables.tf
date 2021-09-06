@@ -16,7 +16,7 @@ variable tfstate_bucket {
 
 variable tfstate_key {
   type = string
-  default = "network/terraform.state"
+  default = "network_ec2_only/terraform.state"
 }
 
 # Network
@@ -37,7 +37,7 @@ variable pub_cidr_block {
 
 variable network_name {
   type        = string
-  default     = "vpc-github"
+  default     = "vpc-github-ec2-only"
 }
 
 variable tags {

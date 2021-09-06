@@ -1,7 +1,7 @@
 data "aws_vpc" "this" {
   filter {
     name   = "tag:Name"
-    values = ["vpc-github"]
+    values = ["vpc-github-ec2-only"]
   }
 }
 
