@@ -16,8 +16,8 @@ if [ $1 = "ec2_complete" ]; then
     terraform init && terraform apply
     
     # Get EC2 public IP
-    ec2_pub_ip=$(aws ec2 describe-instances --filter "Name=instance-state-name,Values=running" --query 'Reservations[*].Instances[*].{Name:Tags[?Key==`Name`]|[0].Value,Creation:Tags[?Key==`Creation`]|[0].Value,Instance:InstanceId,AZ:Placement.AvailabilityZone,PrivateIpAddress:PrivateIpAddress,PublicIpAddress:PublicIpAddress,InstanceType:InstanceType}' --profile github-user --region us-east-1 --output text |grep ec2-github | awk '{print $NF}')
-    
+    ec2_pub_ip=$(aws ec2 describe-instances --filter "Name=instance-state-name,Values=running" --query 'Reservations[*].Instances[*].{Name:Tags[?Key==`Name`]|[0].Value,Creation:Tags[?Key==`Creation`]|[0].Value,Instance:InstanceId,AZ:Placement.AvailabilityZone,PrivateIpAddress:PrivateIpAddress,PublicIpAddress:PublicIpAddress,InstanceType:InstanceType}' --profile github-user --region us-east-1 --output text |grep ec2-github-complete | awk '{print $NF}')
+
     # Update IP in iventory
     gsed -i "s|ec2_pub_ip|$ec2_pub_ip|g" $iventory_file
 
@@ -28,7 +28,7 @@ if [ $1 = "ec2_complete" ]; then
     gsed -i "s|pem|$pem|g" $iventory_file
 
     # Configure instance with Ansible
-    ansible-playbook ansible/playbook.yml -i $iventory_file
+    ansible-playbook ansible/$2.yml -i $iventory_file
     
     cp $iventory_file.bkp $iventory_file
     cp variables.tf.bkp variables.tf
