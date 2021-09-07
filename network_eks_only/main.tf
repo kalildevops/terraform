@@ -7,7 +7,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket = "github-kalil-tfstate"
-    key    = "eks_complete/terraform.state"
+    key    = "network_eks_only/terraform.state"
     region = "us-east-1"
     profile = "github-user"
   }
