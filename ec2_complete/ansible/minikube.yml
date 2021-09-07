@@ -1,0 +1,85 @@
+---
+- hosts: ec2_pub
+  become: yes
+  tasks:
+  
+  - name: Update apt-get repo and cache
+    apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+  - name: Install basic packages for Docker
+    apt:
+      pkg:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - gnupg
+        - lsb-release
+        - python3-pip
+      state: latest
+
+  - pip:
+      name: docker
+
+  - name: Add Docker GPG apt Key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+
+  - name: Add Docker Repository
+    apt_repository:
+      repo: deb https://download.docker.com/linux/ubuntu bionic stable
+      state: present
+
+  - name: install docker-ce
+    apt:
+      name: docker-ce
+      state: latest
+
+  - name: Add Google Cloud public signing key
+    apt_key:
+      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      state: present
+
+  - name: Add the Kubernetes apt repository
+    apt_repository:
+      repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+      state: present
+
+  - name: Update apt-get repo and cache
+    apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+  - name: install kubectl
+    apt:
+      name: kubectl
+      state: latest
+
+  # - name: Accept license virtualbox-ext-pack
+  #   command: echo virtualbox-ext-pack virtualbox-ext-pack/license select true | sudo debconf-set-selection
+
+  # - name: Install basic packages for Minikube
+  #   apt:
+  #     pkg:
+  #       - virtualbox
+  #       # - virtualbox-ext-pack
+  #     state: latest
+
+  - name: Download minikube
+    command: curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+
+  - name: Install minikube
+    command: sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+  - name: Remove minikube download file
+    command: rm -rvf minikube-linux-amd64
+
+  - name: Start minikube
+    command: minikube start --driver=docker
+
+  # - name: Create a sample deployment
+  #   command: kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4
+
+  # - name: Expose deployment on port 8080
+  #   command: kubectl expose deployment balanced --type=LoadBalancer --port=8080
+
+  - name: Create Jenkins namespace
+    command: kubectl create namespace jenkins
