@@ -81,6 +81,16 @@ elif [ $1 = "ec2_cluster_k8s_only" ] ; then
 
     cp variables.tf.bkp variables.tf
 
+elif [ $1 = "ansible_lab" ] ; then
+    cd ../$1
+
+    update_sg
+
+    # Create infra with Terraform
+    terraform init && terraform apply
+
+    cp variables.tf.bkp variables.tf
+
 else
     cd ../$1
     # Create infra with Terraform
