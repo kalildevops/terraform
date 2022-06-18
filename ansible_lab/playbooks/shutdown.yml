@@ -1,0 +1,6 @@
+---
+  - hosts: webservers database
+    tasks:
+      - name: Shutdown all instances
+        become: true
+        command: init 0

@@ -9,6 +9,7 @@
 # test files
 *.kalil
 *.pem
+hosts
 
 # bkp files
 *.bkp
@@ -41,3 +42,5 @@ override.tf.json
 
 # Project on Hold
 website/
+
+

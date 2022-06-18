@@ -1,0 +1,8 @@
+---
+  - hosts: webservers
+    tasks:
+      - name: update webservers hostname
+        become: true
+        hostname:
+          name: "{{ inventory_hostname }}"
+        

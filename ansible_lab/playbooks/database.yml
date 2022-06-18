@@ -1,0 +1,8 @@
+---
+  - hosts: database
+    tasks:
+      - name: update hostname
+        become: true
+        hostname:
+          name: "{{ inventory_hostname }}"
+        
